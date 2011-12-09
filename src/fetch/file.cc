@@ -658,6 +658,9 @@ void html::parseContent (int action) {
       // This page has a BASE HREF tag
       {
         uint end = posParse - area - 1;
+        if (posParse == area) {  // empty base href value
+            break;
+        }
         while (end > 7 && area[end] != '/') end--; // 7 because http://
         if (end > 7) { // this base looks good
           end++;
